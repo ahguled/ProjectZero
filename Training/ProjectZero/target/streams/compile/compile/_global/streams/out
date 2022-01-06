@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0mC:\Users\amina\Training\211213-Big-Data-Reston\Projects IN Scala\ProjectZero\src\main\scala\ProjectZero.scala:46:14: not found: value signInOption[0m
+[0m[[0m[31merror[0m] [0m[0m      while (signInOption != 1) {[0m
+[0m[[0m[31merror[0m] [0m[0m             ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
