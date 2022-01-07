@@ -1,4 +1,4 @@
-[0m[[0m[0mdebug[0m] [0m[0m[projectzero-build] Classpath dependencies List()[0m
-[0m[[0m[0mdebug[0m] [0m[0m[projectzero-build] Dependencies from configurations List()[0m
-[0m[[0m[0mdebug[0m] [0m[0mBloop wrote the configuration of project 'projectzero-build' to 'C:\Users\amina\Training\211213-Big-Data-Reston\Projects IN Scala\ProjectZero\project\.bloop\projectzero-build.json'[0m
-[0m[[0m[32msuccess[0m] [0m[0mGenerated .bloop\projectzero-build.json[0m
+[debug] [projectzero-build] Classpath dependencies List()
+[debug] [projectzero-build] Dependencies from configurations List()
+[debug] Bloop wrote the configuration of project 'projectzero-build' to 'C:\Users\amina\Training\ProjectZero\project\.bloop\projectzero-build.json'
+[success] Generated .bloop\projectzero-build.json

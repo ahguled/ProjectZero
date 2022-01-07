@@ -15,125 +15,201 @@ object Project0 {
     val password = "Greenairplane.87" 
     var scanner = new Scanner(System.in)
     var connection:Connection = null
+    
+       try {
+// makes the connection to db
+      Class.forName(driver)
+      connection = DriverManager.getConnection(url, username, password)
+      val statement = connection.createStatement()
 
     mainMenu()
   
-
     def mainMenu() {
 //greeting and start menu leads to sign in or create method
-    println("     BANK MENU")
-    println("_____________________")
-    println(" ")
-    println("Welcome to F & D Bank")
-    println(" ")
-    println("Select an option between 1-2")
-    println("1.) Sign in")
-    println("2.) Create a new account ")
-    var mainMenuOption = scanner.nextInt();
-
+      println("    BANK MENU")
+      println("_____________________")
+      println(" ")
+      println("Welcome to F & D Bank")
+      println(" ")
+      println("Select an option between 1-3")
+      println("1.) Sign in")
+      println("2.) Create a new account ")
+      println("3.) Exit ")
+      var mainMenuOption = scanner.nextInt();
 //invalid input into Main Menu
-    while ((mainMenuOption != 1) && (mainMenuOption !=2)) {
-        println("Invalid input. Please select 1 or 2")
-        var mainMenuOption=scanner.nextInt()
-    }
-    if (mainMenuOption ==1) {
-      signIn()
-    } else if (mainMenuOption == 2) {
-      createNewaccount()
+      while ((mainMenuOption <= 0) || (mainMenuOption >= 4)) {
+      println("Invalid input. Please select between options 1-3")
+      var mainMenuOption=scanner.nextInt()
+       }
+      if (mainMenuOption == 1 ) {
+          signIn()
+      } else  (mainMenuOption == 3){
+          exit()
+      } else if (mainMenuOption == 2) {
+          createNewUserAccount()
     }
   }
-  
-    
+    def exit(){
+    println("Goodbye!")
+  }
+
 // option 1 -- Sign in Attempt
     var user_nameAttempt= ""
     var passwordAttemt= 0
-    var signedIn= true
+    var signedIn= false
+
     def signIn(){
-        println("Enter your user name ")
-        var user_nameAttempt=scanner.nextLine()
-        println("Enter your password")
-        var passwortAttemnpt=scanner.nextInt()
-        while ((user_nameAttempt == "BankUser.user_Name") && (passwordAttempt == "BankUser.pin")) {
-        var signedIn= true}
-        if (signedIn = true) {
-             signedInMenu()
-        }
-        while (signedIn=false) {
-          println("ERROR: Sign-In credentials incorrect. Try Again")
-          println("Enter your user name ")
-          user_nameAttempt=scanner.nextLine()
-          println("Enter yourpassword")
-          passwortAttemnpt=scanner.nextInt()
-        }
-        // if both are equal to a value in database then the user ID  is the userID(primary key attached to name pin pair)
-        signedInMenu()
-    }
-  
-  // option 1 main menu after successful login
-      def signedInMenu() {
-        println("     BANK MENU")
+        println("    BANK MENU")
         println("_____________________")
         println(" ")
-        println("Select between options 1-5")
+        println("Enter your user name (case sensitive)")
+        var user_nameAttempt = scanner.nextLine()
+        println("Enter your password(case sensitive")
+        var passwordAttemnpt = scanner.nextInt()
+
+        val userSQL = statement.executeQuery("Select userID from BankUser where user_Name = "+user_nameAttempt" ")
+        val pinSQL = statement.executeQuery("Select userID from BankUser where pin = "+passwordAttempt" ")
+        while (userSQL == pinSQL) {
+        var signedIn= true}
+        if (signedIn) {
+             signedInMenu()
+        } else if (!signedIn) {
+          signedIn = false
+          println("ERROR: Sign-In credentials incorrect. Try again or create a new account.")
+          println("Enter your user name ")
+          var user_nameAttempt=scanner.nextLine()
+          println("Enter your password")
+          var passwortAttemnpt=scanner.nextInt()
+        } 
+        // if both are equal to a value in database then the user ID will be equal. This is primary key and foriegn key.
+     }
+  
+  // option 1 main menu after successful login
+    var loggedInOption=scanner.nextInt()  
+    def signedInMenu() {
+        println("    BANK MENU")
+        println("_____________________")
+        println(" ")
+        println("Signed In : Select between options 1-5")
         println("1.) Withdrawls")
         println("2.) Deposits")
         println("3.) Account Details")
         println("4.) User Information")
         println("5.) Exit to Main Menu")
-     }
-       var loggedInOption=scanner.nextInt()
-    // invalid input into Sign In menu
+
+        // invalid input into Sign In menu
           while ((loggedInOption >= 5) && (loggedInOption <= 1)) {
           println("Invalid input. Please select from options 1-5")
           var loggedInOption=scanner.nextInt()
           }
-
-          while (loggedInOption == 1) {
-          println("Enter withdrawl amount.(min 20, max 2000)")
-           var withdraw = scanner.nextInt()
-          // add this as amount to data base in trasanction table as a withdraw for that specific user ID
+          while (loggedInOption == 1) { // need to create error message for if account empty compare user input with a query of total in account from transaction table
+          withdraw()
           }
            while (loggedInOption == 2) {
-           println("Enter deposit amount.(min 20, max 2000)")
-           var deposit = scanner.nextInt()
-           // add this as amount to data base in trasanction table as a deposit for the speciffic user ID
+           deposit()
           }
            while (loggedInOption == 3) {
-          println("Select an Account for transaction list)")
-           println(resultfromquery)
-          // will display all account name and type  and total connected to a user and byu selecting will allow they to see trasactions that occured in that acccount and amount.
+          accountTrans()
           }
           while (loggedInOption == 4) {
-          println("User Information)")
-          println(resultfromquery)
-         // will display user info: name address, email from Contact info
+          userInfo()
           }
           while (loggedInOption == 5) {
-          // return to main menu 
+          mainMenu()
           }
-     
-
-
-
-
-
-//option 2 -- Create account
-      if (mainMenuOption == 2) {
-        //code here 
       }
 
-//database stuff   
-    try {
-      // make the connection to db
-      Class.forName(driver)
-      connection = DriverManager.getConnection(url, username, password)
+      def withdraw(){
+        println("    BANK MENU")
+        println("_____________________")
+        println(" ")
+        accountChoice() // var accountChose holds which account to add withdraw to
+        println("Enter withdrawl amount.(min 20, max 2000)")
+        var withdraw = scanner.nextInt()
+        var withdrawl =statement.executeUpdate("Insert into transactions(userID,account_nickname,amount) values ("+userSQL","+accountChose","+withdraw") ")
+        println(withdraw+" was withdrawn from "+ accountChose)
+                  // add this as amount to data base in trasanction table as a withdraw for that specific user ID and account
+      }
+      def deposit(){
+        println("     BANK MENU")
+        println("_____________________")
+        println(" ") 
+        accountChoice() // var accountChose holds which account to add deposit too
+        println("Enter deposit amount.(min 20, max 2000)")
+        var deposit = scanner.nextInt()
+        var deposited =statement.executeUpdate("Insert into transactions(userID,account_nickname,amount) values ("+userSQL","+accountChose","+deposit") ")
+        println(deposited + " was deposited into "+ accountChose)
+           // add this as amount to data base in trasanction table as a deposit for the speciffic user ID
+      }
 
-      // create the statement, and insert
+      def accountTrans(){
+         println("     BANK MENU")
+         println("_____________________")
+         println(" ")
+         println("Select an Account for transaction list)")
+        accountChoice() 
+          // will display all account name and total connected to a userID
+          // Will allow them to see trasactions with date that occured in that acccount and amounts from transaction table.
+      }
 
-      //val statement = connection.createStatement()
-      //val resultSet = statement.executeUpdate("INSERT INTO BankUser() values ()")
+      def userInfo(){
+         println("    BANK MENU")
+         println("_____________________")
+         println(" ")
+         println("User Information")
+         println()
+          println(resultfromquery)
+         // will display user info: name address, email from BankUSer table
+      }
 
-    /*  while ( resultSet.next() ) {
+      def accountTotal(){
+        val withdrawTotal = statement.executeQuery("Select ")// select the sum of amount where transaction type = withdraw
+        val depositTotal = statement.executeQuery("Select") //select the sum of amount where transaction type = deposit
+        var accountTotal =  depositTotal-withdrawTotal
+      }
+
+      def accountChoice(){
+        println("    BANK MENU")
+        println("_____________________")
+        println(" ")
+        println("ALL ACCOUNTS: ")
+        val account = statement.executeQuery("Select * from accounts")
+        while (account.next()){
+        print(account.getString(2) + " "+ account.getString(3))
+        println()
+        }
+        println("Select an account by entering name of account")
+        var accountChose = scanner.nextLine()
+      }
+
+      //END OF OPTION 1 FROM MAIN MENU
+
+//option 2 -- Create account adds all to contact info or bank user table in database. UsedID will
+//            be auto generated and used as primary key to select use info for all option 1 choices.
+
+     def createNewUserAccount() {
+       println("    BANK MENU")
+       println("_____________________")
+       println(" ")
+       println("Enter a user Name")
+        var userName= scanner.nextLine()
+       println("Enter a 4 digit pin that doesn't start with 0")
+        var password = scanner.nextInt()
+       println("Enter your name")
+        var customerName = scanner.nextLine()
+       println("Enter your address") 
+        var address = scanner.nextLine()
+       println("Enter an email address")
+        var email = scanner.nextLine()
+        println("Enter knickname for Account")
+        var accountName=scanner.nextLine()
+        println("Enter amount of deposit (min 100, max 2000)")
+        var deposit = scanner.nextInt
+      val addedBankUsser = statement.executeUpdate("Insert Into BankUser(user_Name, pin, legal_name, address,email) values ("+userName", "+password", "+customerName","+address","+email")")
+      val addedAccount = statement.executeUpdate("Insert Into accounts(userID, account_nickname, amount) values("+accountName"+"+deposit")" )
+     }      
+
+          /*  while ( resultSet.next() ) {
        print(resultSet.getString(1) + " "+ resultSet.getString(2))
        println()
       } */
@@ -142,5 +218,7 @@ object Project0 {
       case e: Exception => e.printStackTrace
     }
     connection.close()     
-     }
-  }
+
+    } // end main
+
+} // end object

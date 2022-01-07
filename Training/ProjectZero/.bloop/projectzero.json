@@ -2,14 +2,14 @@
     "version": "1.4.0",
     "project": {
         "name": "projectzero",
-        "directory": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero",
-        "workspaceDir": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero",
+        "directory": "C:\\Users\\amina\\Training\\ProjectZero",
+        "workspaceDir": "C:\\Users\\amina\\Training\\ProjectZero",
         "sources": [
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\src\\main\\scala",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\src\\main\\scala-2.11",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\src\\main\\scala-2",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\src\\main\\java",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\target\\scala-2.11\\src_managed\\main"
+            "C:\\Users\\amina\\Training\\ProjectZero\\src\\main\\scala",
+            "C:\\Users\\amina\\Training\\ProjectZero\\src\\main\\scala-2.11",
+            "C:\\Users\\amina\\Training\\ProjectZero\\src\\main\\scala-2",
+            "C:\\Users\\amina\\Training\\ProjectZero\\src\\main\\java",
+            "C:\\Users\\amina\\Training\\ProjectZero\\target\\scala-2.11\\src_managed\\main"
         ],
         "dependencies": [
             
@@ -19,11 +19,11 @@
             "C:\\Users\\amina\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\mysql\\mysql-connector-java\\8.0.27\\mysql-connector-java-8.0.27.jar",
             "C:\\Users\\amina\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\google\\protobuf\\protobuf-java\\3.11.4\\protobuf-java-3.11.4.jar"
         ],
-        "out": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\.bloop\\projectzero",
-        "classesDir": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\.bloop\\projectzero\\scala-2.11\\classes",
+        "out": "C:\\Users\\amina\\Training\\ProjectZero\\.bloop\\projectzero",
+        "classesDir": "C:\\Users\\amina\\Training\\ProjectZero\\.bloop\\projectzero\\scala-2.11\\classes",
         "resources": [
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\src\\main\\resources",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\target\\scala-2.11\\resource_managed\\main"
+            "C:\\Users\\amina\\Training\\ProjectZero\\src\\main\\resources",
+            "C:\\Users\\amina\\Training\\ProjectZero\\target\\scala-2.11\\resource_managed\\main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -40,7 +40,7 @@
                 "C:\\Users\\amina\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\modules\\scala-parser-combinators_2.11\\1.0.4\\scala-parser-combinators_2.11-1.0.4.jar",
                 "C:\\Users\\amina\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\jline\\jline\\2.14.3\\jline-2.14.3.jar"
             ],
-            "analysis": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\target\\streams\\compile\\bloopAnalysisOut\\_global\\streams\\inc_compile_2.11.zip",
+            "analysis": "C:\\Users\\amina\\Training\\ProjectZero\\target\\streams\\compile\\bloopAnalysisOut\\_global\\streams\\inc_compile_2.11.zip",
             "setup": {
                 "order": "mixed",
                 "addLibraryToBootClasspath": true,
@@ -104,7 +104,7 @@
             "config": {
                 "home": "C:\\Program Files\\Java\\jdk-17.0.1",
                 "options": [
-                    "-Duser.dir=C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero"
+                    "-Duser.dir=C:\\Users\\amina\\Training\\ProjectZero"
                 ]
             },
             "mainClass": [

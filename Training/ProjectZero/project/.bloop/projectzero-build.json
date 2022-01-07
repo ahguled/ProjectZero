@@ -2,15 +2,15 @@
     "version": "1.4.0",
     "project": {
         "name": "projectzero-build",
-        "directory": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project",
-        "workspaceDir": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project",
+        "directory": "C:\\Users\\amina\\Training\\ProjectZero\\project",
+        "workspaceDir": "C:\\Users\\amina\\Training\\ProjectZero\\project",
         "sources": [
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\src\\main\\scala",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\src\\main\\scala-2.12",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\src\\main\\scala-2",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\src\\main\\java",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\src\\main\\scala-sbt-1.0",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\src\\main\\scala",
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\src\\main\\scala-2.12",
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\src\\main\\scala-2",
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\src\\main\\java",
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\src\\main\\scala-sbt-1.0",
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
         ],
         "dependencies": [
             
@@ -105,11 +105,11 @@
             "C:\\Users\\amina\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\squareup\\okio\\okio\\1.17.2\\okio-1.17.2.jar",
             "C:\\Users\\amina\\AppData\\Local\\Coursier\\Cache\\v1\\https\\repo1.maven.org\\maven2\\com\\typesafe\\config\\1.3.3\\config-1.3.3.jar"
         ],
-        "out": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\.bloop\\projectzero-build",
-        "classesDir": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\.bloop\\projectzero-build\\scala-2.12\\sbt-1.0\\classes",
+        "out": "C:\\Users\\amina\\Training\\ProjectZero\\project\\.bloop\\projectzero-build",
+        "classesDir": "C:\\Users\\amina\\Training\\ProjectZero\\project\\.bloop\\projectzero-build\\scala-2.12\\sbt-1.0\\classes",
         "resources": [
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\src\\main\\resources",
-            "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\src\\main\\resources",
+            "C:\\Users\\amina\\Training\\ProjectZero\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -128,7 +128,7 @@
                 "C:\\Users\\amina\\.sbt\\boot\\scala-2.12.14\\lib\\scala-reflect.jar",
                 "C:\\Users\\amina\\.sbt\\boot\\scala-2.12.14\\lib\\scala-xml_2.12.jar"
             ],
-            "analysis": "C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project\\target\\streams\\compile\\bloopAnalysisOut\\_global\\streams\\inc_compile_2.12.zip",
+            "analysis": "C:\\Users\\amina\\Training\\ProjectZero\\project\\target\\streams\\compile\\bloopAnalysisOut\\_global\\streams\\inc_compile_2.12.zip",
             "setup": {
                 "order": "mixed",
                 "addLibraryToBootClasspath": true,
@@ -203,7 +203,7 @@
             "config": {
                 "home": "C:\\Program Files\\Java\\jdk-17.0.1",
                 "options": [
-                    "-Duser.dir=C:\\Users\\amina\\Training\\211213-Big-Data-Reston\\Projects IN Scala\\ProjectZero\\project"
+                    "-Duser.dir=C:\\Users\\amina\\Training\\ProjectZero\\project"
                 ]
             },
             "mainClass": [
