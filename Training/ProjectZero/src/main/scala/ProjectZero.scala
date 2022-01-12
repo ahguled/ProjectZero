@@ -9,13 +9,19 @@ import java.io.PrintWriter
 //code start
 object Project0 {
   val log = new PrintWriter(new File("BankRecords.log"))
-
-  def exit() {
-
+  def finalExit()  {
+    var signedIn = false
     println("______________________________________________")
     println(" ")
     println(" Goodbye! Thank you for banking with us!")
-    println()
+    var end = 0
+  }
+
+  def exit(): Unit = {
+    println("______________________________________________")
+    println(" ")
+    println(" Thank you for banking with us!")
+    println(" Returning to sign-in options.")
     println()
   }
   def accountChoice(
@@ -93,8 +99,6 @@ object Project0 {
     var deleteChoice = scanner.next().toUpperCase()
     if (deleteChoice == "Y") {
       var chose = accountChoice(userSQL, connection, scanner)
-      println(chose)
-      println(userSQL)
       var deletedAccount = statement.executeUpdate(
         "Delete from accounts where userID = " + userSQL + " and account_nickname = \"" + chose + "\";"
       )
@@ -322,7 +326,7 @@ object Project0 {
     println(
       "Welcome " + userName + ", Account created return to main menu to sign in!"
     )
-    exit()
+    finalExit()
   }
   // END of Option 2
   // Menu after succesful login and access to OPTION 1 methods
@@ -347,7 +351,7 @@ object Project0 {
     println("4.) User Information")
     println("5.) Create a New account")
     println("6.) Close an Account ")
-    println("7.) Exit")
+    println("To Exit:enter exit")
     var loggedInOption = scanner.nextInt()
     // invalid input into Main Menu
     while ((loggedInOption >= 8) && (loggedInOption <= 1)) {
@@ -392,7 +396,8 @@ object Project0 {
         scanner
       )
     } else if (loggedInOption == 7) {
-      exit()
+      var userSQL = finalExit()
+      var signedIn = false
     }
   }
   def signIn(
@@ -403,6 +408,7 @@ object Project0 {
       accountsTotal: Int,
       connection: Connection,
       scanner: Scanner
+      
   ) {
     var user_nameAttempt = ""
     var passwordAttempt = 0
@@ -421,7 +427,7 @@ object Project0 {
     )
     log.write(
       "Executing 'Select userID from BankUser where user_Name = " + user_nameAttempt + "';\n"
-    )
+    ) 
     while (userRes.next()) {
       var userSQL1 = userRes.getString(1)
       var userSQL = userSQL1.toInt
@@ -440,22 +446,34 @@ object Project0 {
         var pinSQL = pinSQL1.toInt
         if (pinSQL == userSQL) {
           signedIn = true
-        
-        if (signedIn) {
-          signedInMenu(
-            userSQL,
-            chose,
-            withdraw,
-            deposit,
-            accountsTotal,
-            connection,
-            scanner
-          )
-        }else if (!signedIn){
-        println("Invalid credentials.  Try again later.")
-        exit()
-        } 
-      }
+
+          if (signedIn) {
+            signedInMenu(
+              userSQL,
+              chose,
+              withdraw,
+              deposit,
+              accountsTotal,
+              connection,
+              scanner
+            )
+            while (signedIn) {
+              signedInMenu(
+                userSQL,
+                chose,
+                withdraw,
+                deposit,
+                accountsTotal,
+                connection,
+                scanner
+              )
+            }
+             
+          } else if (!signedIn) {
+            println("Invalid input.")
+            finalExit()
+          }
+        }
       }
     }
   }
@@ -469,6 +487,7 @@ object Project0 {
       accountsTotal: Int,
       connection: Connection,
       scanner: Scanner
+      
   ) {
 //greeting and start menu leads to sign in, create account or exit
     println("             BANK MAIN MENU")
@@ -482,8 +501,8 @@ object Project0 {
     println("3.) Exit ")
     var mainMenuOption = scanner.nextInt()
 // if invalid input into Main Menu
-    while ((mainMenuOption <= 0) || (mainMenuOption >= 4)) {
-      println("Invalid input. Please select between options 1-3 ")
+    if ((mainMenuOption <= 0) || (mainMenuOption >= 4)) {
+      println("Invalid input. Please retry.")
       var mainMenuOption = scanner.nextInt()
     }
     if (mainMenuOption == 1) {
@@ -495,12 +514,15 @@ object Project0 {
         accountsTotal,
         connection,
         scanner
+        
       )
     } else if (mainMenuOption == 2) {
       createNewUserAccount(userSQL, connection, scanner)
     } else if (mainMenuOption == 3) {
-      exit()
+      finalExit()
     }
+
+    
   }
   def main(args: Array[String]): Unit = {
     val driver = "com.mysql.jdbc.Driver"
@@ -515,6 +537,7 @@ object Project0 {
     var withdraw = 0
     var deposit = 0
     var connection: Connection = null
+    var loggedInOption=0
     try {
       Class.forName(driver)
       connection = DriverManager.getConnection(url, username, password)
@@ -527,12 +550,14 @@ object Project0 {
         accountsTotal,
         connection,
         scanner
-      )
+             )
 
     } catch {
       case e: Exception => {
-        e.printStackTrace
-        println("Invalid input: Try again from main menu")
+        // e.printStackTrace
+        println("Goodbye, Thank you." )
+        
+             
       }
     }
     connection.close()
